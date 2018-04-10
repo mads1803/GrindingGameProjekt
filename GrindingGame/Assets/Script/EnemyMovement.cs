@@ -7,13 +7,14 @@ public class EnemyMovement : MonoBehaviour
     private NavMeshAgent _nav;
     private Transform _player;
     Animator _animator;
+    public Animation anim;
 
     void Start()
     {
         _nav = GetComponent<NavMeshAgent>();
         _player = GameObject.FindGameObjectWithTag("Player").transform;
         _animator = GetComponent<Animator>();
-
+        anim = GetComponent<Animation>();
     }
 
     void Update()
@@ -21,8 +22,14 @@ public class EnemyMovement : MonoBehaviour
         //TODO: Finde animation done statement
         if (!_animator.GetBool("IsNearPlayer") )
         {
-            _nav.SetDestination(_player.position);
-            _animator.SetBool("running", true);
+             if (!_animator.GetCurrentAnimatorStateInfo(0).IsName("JumpAttack"))
+             {
+                _nav.SetDestination(_player.position);
+                _animator.SetBool("running", true);
+            }
+               
+
+           
         }
         
 

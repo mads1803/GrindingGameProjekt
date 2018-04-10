@@ -6,9 +6,12 @@ using UnityEngine.AI;
 public class PlayerController : MonoBehaviour {
     private Animator anim;
     Rigidbody rigidb;
-    public float shootForce = 2000;
+    public float health = 100;
     private NavMeshAgent navMeshAgent;
     public float rotationSpeed = 100.0F;
+    public Rigidbody arrow;
+    public Transform arrowPoint;
+    public float arrowSpeed;
 
     private void OnEnable()
     {
@@ -20,29 +23,57 @@ public class PlayerController : MonoBehaviour {
     void Start () {
         anim = GetComponent<Animator>();
         navMeshAgent = GetComponent<NavMeshAgent>();
+        anim.SetBool("isDead", false);
     }
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKey(KeyCode.LeftShift) && Input.GetButton("Fire1")) {
-            lookAtMouse();
+        StopAndAttack();
+        Death();
+    }
 
+    void StopAndAttack()
+    {
+        if (Input.GetKey(KeyCode.LeftShift) && Input.GetButton("Fire1") || Input.GetButton("Fire2"))
+        {
+            lookAtMouse();      
             navMeshAgent.isStopped = true;
             anim.SetBool("isShooting", true);
+            if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !anim.IsInTransition(0)) {
+                Shoot();
+            }
+                
             Debug.Log("Skyder");
         }
         else
         {
             anim.SetBool("isShooting", false);
             navMeshAgent.isStopped = false;
-
-        }     
+        }
     }
 
 
+    void Shoot ()
+    {
+        // check for Fire1 input and instantiate bullet prefab at bulletPoint                     
+        if (Input.GetButtonDown("Fire1") || Input.GetButtonDown("Fire2"))
+        {   
+                Rigidbody arrowInstance = Instantiate(arrow, arrowPoint.transform.position, arrowPoint.transform.rotation);
+                arrowInstance.velocity = transform.TransformDirection(Vector3.forward * arrowSpeed);    
+        }
+    }
+
+    void Death()
+    {
+        if(health<= 0)
+        {
+            anim.SetBool("isDead", true);
+        }
+    }
+
     void ApplyForce()
     {
-        rigidb.AddRelativeForce(Vector3.forward * shootForce);
+        rigidb.AddRelativeForce(Vector3.forward * arrowSpeed);
     }
 
     void SpinObjectInAir()

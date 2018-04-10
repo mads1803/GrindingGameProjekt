@@ -22,7 +22,7 @@ public class ClickToMove : MonoBehaviour
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        if (Input.GetMouseButton(0) && !Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetMouseButton(0) && !Input.GetKey(KeyCode.LeftShift) && !anim.GetBool("isDead"))
         {
             if (Physics.Raycast(ray, out hit, 100))
             {
