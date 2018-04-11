@@ -21,6 +21,7 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         movementX = ((player.transform.position.x + offsetX - this.transform.position.x)) / maximumDistance;
         movementZ = ((player.transform.position.z + offsetZ - this.transform.position.z)) / maximumDistance;
         movementY = ((player.transform.position.y + offsetY - this.transform.position.y)) / maximumDistance;

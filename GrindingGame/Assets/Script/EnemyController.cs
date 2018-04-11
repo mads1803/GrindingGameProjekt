@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour {
+    public int enemyHealth = 100; 
 
 	// Use this for initialization
 	void Start () {
@@ -13,4 +14,13 @@ public class EnemyController : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    void takeDamage(int damage)
+    {
+        enemyHealth -= damage;
+        if(enemyHealth<= 0)
+        {
+
+        }
+    }
 }

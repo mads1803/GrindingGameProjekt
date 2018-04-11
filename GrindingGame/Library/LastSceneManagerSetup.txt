@@ -1,4 +1,10 @@
 sceneSetups:
+- path: Assets/EasyMainMenu/Scenes/MainMenu.unity
+  isLoaded: 0
+  isActive: 0
 - path: Assets/MedievalTownExteriors/Scenes/Demo.unity
   isLoaded: 1
   isActive: 1
+- path: Assets/InventoryMaster/Examples/Example.unity
+  isLoaded: 0
+  isActive: 0

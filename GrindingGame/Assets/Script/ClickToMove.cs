@@ -20,13 +20,21 @@ public class ClickToMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        move();
+
+    }
+
+    void move()
+    {
+        
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        if (Input.GetMouseButton(0) && !Input.GetKey(KeyCode.LeftShift) && !anim.GetBool("isDead"))
+        if (Input.GetMouseButton(0) && !Input.GetKey(KeyCode.LeftShift) && !anim.GetBool("isDead") && !Input.GetButton("Fire2") && !anim.GetBool("showingChest"))
         {
             if (Physics.Raycast(ray, out hit, 100))
             {
-                navMeshAgent.destination = hit.point;
+                navMeshAgent.isStopped = false;
+                navMeshAgent.destination = hit.point;               
             }
         }
 
@@ -42,7 +50,6 @@ public class ClickToMove : MonoBehaviour
         }
 
         anim.SetBool("running", mRunnging);
-
     }
 
 

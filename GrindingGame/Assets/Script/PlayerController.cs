@@ -1,12 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.AI;
 
 public class PlayerController : MonoBehaviour {
     private Animator anim;
     Rigidbody rigidb;
-    public float health = 100;
     private NavMeshAgent navMeshAgent;
     public float rotationSpeed = 100.0F;
     public Rigidbody arrow;
@@ -29,80 +29,51 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         StopAndAttack();
-        Death();
+        
     }
 
     void StopAndAttack()
     {
+        
         if (Input.GetKey(KeyCode.LeftShift) && Input.GetButton("Fire1") || Input.GetButton("Fire2"))
         {
-            lookAtMouse();      
-            navMeshAgent.isStopped = true;
+            lookAtMouse();
+            //navMeshAgent.isStopped = true;
+            navMeshAgent.destination = navMeshAgent.transform.position;
             anim.SetBool("isShooting", true);
-            if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !anim.IsInTransition(0)) {
-                Shoot();
-            }
+            Shoot();
+        
                 
-            Debug.Log("Skyder");
         }
         else
         {
             anim.SetBool("isShooting", false);
-            navMeshAgent.isStopped = false;
         }
     }
 
 
     void Shoot ()
-    {
-        // check for Fire1 input and instantiate bullet prefab at bulletPoint                     
-        if (Input.GetButtonDown("Fire1") || Input.GetButtonDown("Fire2"))
+    {                  
+        if (Input.GetButton("Fire1") || Input.GetButton("Fire2"))
         {   
                 Rigidbody arrowInstance = Instantiate(arrow, arrowPoint.transform.position, arrowPoint.transform.rotation);
                 arrowInstance.velocity = transform.TransformDirection(Vector3.forward * arrowSpeed);    
         }
     }
 
-    void Death()
-    {
-        if(health<= 0)
-        {
-            anim.SetBool("isDead", true);
-        }
-    }
-
-    void ApplyForce()
-    {
-        rigidb.AddRelativeForce(Vector3.forward * arrowSpeed);
-    }
-
-    void SpinObjectInAir()
-    {
-
-    }
-
     void lookAtMouse()
     {
         {
-            // Generate a plane that intersects the transform's position with an upwards normal.
+         
             Plane playerPlane = new Plane(Vector3.up, transform.position);
 
-            // Generate a ray from the cursor position
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            // Determine the point where the cursor ray intersects the plane.
-            // This will be the point that the object must look towards to be looking at the mouse.
-            // Raycasting to a Plane object only gives us a distance, so we'll have to take the distance,
-            //   then find the point along that ray that meets that distance.  This will be the point
-            //   to look at.
             float hitdist = 0.0f;
-            // If the ray is parallel to the plane, Raycast will return false.
+
             if (playerPlane.Raycast(ray, out hitdist))
             {
-                // Get the point along the ray that hits the calculated distance.
                 Vector3 targetPoint = ray.GetPoint(hitdist);
 
-                // Determine the target rotation.  This is the rotation if the transform looks at the target point.
                 Quaternion targetRotation = Quaternion.LookRotation(targetPoint - transform.position);
 
                 // Smoothly rotate towards the target point.
