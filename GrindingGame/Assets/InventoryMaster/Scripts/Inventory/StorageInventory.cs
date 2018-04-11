@@ -23,7 +23,7 @@ public class StorageInventory : MonoBehaviour
     public int distanceToOpenStorage;
 
     public float timeToOpenStorage;
-    private Animator anim;
+    //private Animator anim;
     private InputManager inputManagerDatabase;
 
     float startTimer;
@@ -62,7 +62,7 @@ public class StorageInventory : MonoBehaviour
 
         //----- Custom
         int creatingItemsForChest = 1;
-        anim = GetComponent<Animator>();
+        //anim = GetComponent<Animator>();
         
 
         int randomItemAmount = Random.Range(1, itemAmount);

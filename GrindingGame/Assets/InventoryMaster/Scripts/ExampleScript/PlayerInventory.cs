@@ -166,8 +166,8 @@ public class PlayerInventory : MonoBehaviour
             hpImage = HPMANACanvas.transform.GetChild(1).GetComponent<Image>();
             manaImage = HPMANACanvas.transform.GetChild(1).GetComponent<Image>();
 
-            //UpdateHPBar();
-            //UpdateManaBar();
+            UpdateHPBar();
+            UpdateManaBar();
         }
 
         if (inputManagerDatabase == null)
@@ -189,8 +189,9 @@ public class PlayerInventory : MonoBehaviour
     void UpdateHPBar()
     {
         hpText.text = (currentHealth + "/" + maxHealth);
+        if (currentHealth < 0)
+            currentHealth = 0;
         float fillAmount = currentHealth / maxHealth;
-        Debug.Log(fillAmount);
         hpImage.fillAmount = fillAmount;
     }
 
@@ -288,7 +289,6 @@ public class PlayerInventory : MonoBehaviour
     void Update()
     {
         UpdateHPBar();
-        UpdateManaBar();
 
         if (Input.GetKeyDown(inputManagerDatabase.CharacterSystemKeyCode))
         {
