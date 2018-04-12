@@ -20,9 +20,9 @@ public class EnemyMovement : MonoBehaviour
     void Update()
     {
         //TODO: Finde animation done statement
-        if (!_animator.GetBool("IsNearPlayer") )
+        if (!_animator.GetBool("IsNearPlayer") && !_animator.GetBool("IsDead"))
         {
-             if (!_animator.GetCurrentAnimatorStateInfo(0).IsName("JumpAttack"))
+             if (!_animator.GetCurrentAnimatorStateInfo(0).IsName("Basic Attack"))
              {
                 _nav.SetDestination(_player.position);
                 _animator.SetBool("running", true);

@@ -20,6 +20,7 @@ TagManager:
   - MainInventory
   - Timer
   - Music
+  - Arrow
   layers:
   - Default
   - TransparentFX

@@ -2,9 +2,12 @@ sceneSetups:
 - path: Assets/EasyMainMenu/Scenes/MainMenu.unity
   isLoaded: 0
   isActive: 0
-- path: Assets/MedievalTownExteriors/Scenes/Demo.unity
+- path: Assets/MedievalTownExteriors/Scenes/TownScene.unity
   isLoaded: 1
   isActive: 1
 - path: Assets/InventoryMaster/Examples/Example.unity
+  isLoaded: 0
+  isActive: 0
+- path: Assets/Polylised - Medieval Desert City/Demo/Demo_01.unity
   isLoaded: 0
   isActive: 0
