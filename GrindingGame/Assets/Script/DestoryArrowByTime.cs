@@ -6,12 +6,13 @@ public class DestoryArrowByTime : MonoBehaviour {
 
     public float lifeTime;
     private Rigidbody arrow;
-    private Collider colliderToIgnore;
+    private Collider arrowCollider;
 
     private void Start()
     {
         Destroy(gameObject, lifeTime);
         arrow = GetComponent<Rigidbody>();
+        arrowCollider = GetComponent<Collider>();
         //arrow2 = GetComponent<Collider>();
         //colliderToIgnore = GameObject.Find("Player/Aroow").GetComponent<Collider>();
     }
@@ -30,7 +31,12 @@ public class DestoryArrowByTime : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!(other.gameObject.tag == "Arrow") && !(other.gameObject.tag == "Player"))
+        if (!(other.gameObject.tag == "Arrow") && !(other.gameObject.tag == "Player")) { 
             arrow.constraints = RigidbodyConstraints.FreezeAll;
+            arrowCollider.enabled = false;
+        }
+
+        if (other.gameObject.tag == "Enemy")
+            Destroy(gameObject);
     }
 }

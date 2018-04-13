@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour {
     public int enemyHealth = 100;
+    private NavMeshAgent _nav;
     Animator _animator;
     AudioSource audio;
     public AudioClip audioDie;
@@ -16,6 +18,7 @@ public class EnemyController : MonoBehaviour {
         _animator = GetComponent<Animator>();
         audio = GetComponent<AudioSource>();
         m_Collider = GetComponent<Collider>();
+        _nav = GetComponent<NavMeshAgent>();
     }
 	
 	// Update is called once per frame
@@ -52,9 +55,14 @@ public class EnemyController : MonoBehaviour {
                 audio.clip = audioDie;
                 audio.Play();
                 m_Collider.enabled = false;
+                _nav.destination = _nav.transform.position;
+                _nav.enabled = false;
 
             }
         }
 
     }
+
+
+  
 }

@@ -21,6 +21,7 @@ TagManager:
   - Timer
   - Music
   - Arrow
+  - Enemy
   layers:
   - Default
   - TransparentFX
