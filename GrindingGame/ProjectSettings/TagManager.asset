@@ -22,6 +22,8 @@ TagManager:
   - Music
   - Arrow
   - Enemy
+  - DruideWeapon
+  - AssassinWeapon
   layers:
   - Default
   - TransparentFX
