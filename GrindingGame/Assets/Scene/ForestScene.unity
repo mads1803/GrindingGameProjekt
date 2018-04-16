@@ -12490,7 +12490,6 @@ MonoBehaviour:
   characterSystem: {fileID: 0}
   craftSystem: {fileID: 0}
   HPMANACanvas: {fileID: 0}
-  currentHealth: 100
 --- !u!114 &846799215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22438,7 +22437,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1488188285}
   m_LocalRotation: {x: -0, y: 0.9999769, z: -0, w: -0.006806623}
-  m_LocalPosition: {x: 416.5, y: -610.9, z: -550.9}
+  m_LocalPosition: {x: 416.5, y: -599.2, z: -550.9}
   m_LocalScale: {x: 3.9632847, y: 3.9632833, z: 3.9632833}
   m_Children:
   - {fileID: 1684016136}
@@ -24110,7 +24109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   other: {fileID: 846799221}
-  SceneToLoad: DesertScene
+  SceneToLoad: TownScene
   rend: {fileID: 0}
 --- !u!23 &1654174309
 MeshRenderer:
