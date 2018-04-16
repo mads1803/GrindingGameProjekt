@@ -19,10 +19,9 @@ public class EnemySpawn : MonoBehaviour {
 
     void Spawn()
     {
-        //// If the player has no health left...
+        //// If the player is dead
         //if (playerHealth.currentHealth <= 0f)
         //{
-        //    // ... exit the function.
         //    return;
         //}
 
