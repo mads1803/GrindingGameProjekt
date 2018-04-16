@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour {
     public Rigidbody arrow;
     public Transform arrowPoint;
     public float arrowSpeed;
+    
 
     private void OnEnable()
     {
@@ -31,6 +32,8 @@ public class PlayerController : MonoBehaviour {
         StopAndAttack();
         
     }
+
+   
 
     void StopAndAttack()
     {
