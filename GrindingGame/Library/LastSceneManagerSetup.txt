@@ -1,16 +1,19 @@
 sceneSetups:
 - path: Assets/Scene/MainMenu.unity
-  isLoaded: 1
-  isActive: 1
+  isLoaded: 0
+  isActive: 0
 - path: Assets/Scene/ForestScene.unity
   isLoaded: 0
   isActive: 0
 - path: Assets/Scene/TownScene.unity
-  isLoaded: 0
-  isActive: 0
+  isLoaded: 1
+  isActive: 1
 - path: Assets/Scene/DesertScene.unity
   isLoaded: 0
   isActive: 0
 - path: Assets/Scene/Forest.unity
+  isLoaded: 0
+  isActive: 0
+- path: Assets/Minimap-master/Minimap/Assets/Main.unity
   isLoaded: 0
   isActive: 0
