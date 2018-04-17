@@ -7,27 +7,23 @@ public class DestoryArrowByTime : MonoBehaviour {
     public float lifeTime;
     private Rigidbody arrow;
     private Collider arrowCollider;
+    public float arrowDmg;
+    private EnemyController enemyController;
+    private PlayerInventory playerController;
+    public GameObject player;
 
     private void Start()
     {
         Destroy(gameObject, lifeTime);
         arrow = GetComponent<Rigidbody>();
         arrowCollider = GetComponent<Collider>();
-        //arrow2 = GetComponent<Collider>();
-        //colliderToIgnore = GameObject.Find("Player/Aroow").GetComponent<Collider>();
+        // playerController = GetComponent<PlayerInventory>().tag("Player");
+        player = GameObject.FindGameObjectWithTag("Player");
+        arrowDmg += player.GetComponent<PlayerInventory>().maxDamage;
+        //playerController.currentDamage;
+        Debug.Log(arrowDmg);
+        Debug.Log(player.GetComponent<PlayerInventory>().maxDamage);
     }
-
-    private void Update()
-    {
-
-    }
-
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    if (!(collision.gameObject.tag == "Arrow") && !(collision.gameObject.tag == "Player"))
-    //        arrow.constraints = RigidbodyConstraints.FreezeAll;
-    //    //arrow.isKinematic = true;
-    //}
 
     private void OnTriggerEnter(Collider other)
     {
@@ -37,6 +33,15 @@ public class DestoryArrowByTime : MonoBehaviour {
         }
 
         if (other.gameObject.tag == "Enemy")
+        {
+            // other.gameObject.SendMessage("ApplyDmg", arrowDmg);
+            
+            enemyController = other.gameObject.GetComponent<EnemyController>();
+            enemyController.takeDamage(arrowDmg);
+          
             Destroy(gameObject);
+        }
+            
+       
     }
 }

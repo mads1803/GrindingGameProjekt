@@ -391,6 +391,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeTime: 5
+  arrowDmg: 103.95
 --- !u!198 &198315112738957380
 ParticleSystem:
   m_ObjectHideFlags: 1

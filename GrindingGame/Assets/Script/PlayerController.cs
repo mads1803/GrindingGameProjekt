@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour {
     public Transform arrowPoint;
     public float arrowSpeed;
     
+    
 
     private void OnEnable()
     {
@@ -55,11 +56,9 @@ public class PlayerController : MonoBehaviour {
 
 
     void Shoot ()
-    {                  
-       
+    {                   
                 Rigidbody arrowInstance = Instantiate(arrow, arrowPoint.transform.position, arrowPoint.transform.rotation);
-                arrowInstance.velocity = transform.TransformDirection(Vector3.forward * arrowSpeed);    
-       
+                arrowInstance.velocity = transform.TransformDirection(Vector3.forward * arrowSpeed);        
     }
 
     void lookAtMouse()

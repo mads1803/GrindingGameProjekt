@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour {
-    public int enemyHealth = 100;
+    public float enemyHealth = 100;
     private NavMeshAgent _nav;
     Animator _animator;
     AudioSource audio;
@@ -31,12 +31,12 @@ public class EnemyController : MonoBehaviour {
     {
         if (other.gameObject.tag == "Arrow")
         {
-            takeDamage(10);
-            Debug.Log("10 skade");
+           // takeDamage(10);
+            Debug.Log("Trigger enter");
         }
     }
 
-    void takeDamage(int damage)
+    public void takeDamage(float damage)
     {
         if (!dead) { 
         enemyHealth -= damage;

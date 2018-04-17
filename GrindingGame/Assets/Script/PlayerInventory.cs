@@ -27,12 +27,12 @@ public class PlayerInventory : MonoBehaviour
 
     float maxHealth = 100;
     float maxMana = 100;
-    float maxDamage = 0;
+    public float maxDamage = 0;
     float maxArmor = 0;
 
     public static float currentHealth = 100;
     float currentMana = 100;
-    float currentDamage = 0;
+    public float currentDamage = 100;
     float currentArmor = 0;
 
     int normalSize = 3;
@@ -68,6 +68,7 @@ public class PlayerInventory : MonoBehaviour
     {
         if (item.itemType == ItemType.Weapon)
         {
+           // item
             //add the weapon if you unequip the weapon
         }
     }
