@@ -44,15 +44,7 @@ public class PlayerController : MonoBehaviour {
             //navMeshAgent.isStopped = true;
             navMeshAgent.destination = navMeshAgent.transform.position;
             anim.SetBool("isShooting", true);
-            
-            //if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Shoot Arrow") && anim.GetBool("isShooting"))
-            //{
-            //    Shoot();
-            //    anim.SetBool("isShooting", false);
-            //}
-            Shoot();
-            
-        
+         
                 
         }
         else
@@ -64,11 +56,10 @@ public class PlayerController : MonoBehaviour {
 
     void Shoot ()
     {                  
-        if (Input.GetButton("Fire1") || Input.GetButton("Fire2"))
-        {   
+       
                 Rigidbody arrowInstance = Instantiate(arrow, arrowPoint.transform.position, arrowPoint.transform.rotation);
                 arrowInstance.velocity = transform.TransformDirection(Vector3.forward * arrowSpeed);    
-        }
+       
     }
 
     void lookAtMouse()
