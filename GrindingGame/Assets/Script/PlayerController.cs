@@ -44,7 +44,14 @@ public class PlayerController : MonoBehaviour {
             //navMeshAgent.isStopped = true;
             navMeshAgent.destination = navMeshAgent.transform.position;
             anim.SetBool("isShooting", true);
+            
+            //if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Shoot Arrow") && anim.GetBool("isShooting"))
+            //{
+            //    Shoot();
+            //    anim.SetBool("isShooting", false);
+            //}
             Shoot();
+            
         
                 
         }
