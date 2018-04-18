@@ -4941,7 +4941,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1021451271990816, guid: e9c515ea69556434caf460aa1b38b514, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e9c515ea69556434caf460aa1b38b514, type: 2}
@@ -22321,7 +22321,7 @@ Prefab:
         type: 2}
     - target: {fileID: 1214102072564830, guid: 2b265c1a6dc171547ac56bc10fa9333d, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2b265c1a6dc171547ac56bc10fa9333d, type: 2}
@@ -32174,7 +32174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3552c6f9dbd6ce44a975c483dcba50c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  other: {fileID: 0}
+  other: {fileID: 598406441}
   SceneToLoad: ForestScene
   rend: {fileID: 0}
 --- !u!23 &1922373075
