@@ -7,13 +7,15 @@ using UnityEngine.AI;
 public class LeaveTownScript : MonoBehaviour {
     public Transform other;
     public string SceneToLoad;
+    public int range;
  
 
     private void OnMouseDown()
     {
         
         float dist = Vector3.Distance(other.position, transform.position);
-        if (dist < 10)
+        Debug.Log("OcclusionPortal");
+        if (dist < range)
         {
             Debug.Log("Portalen er trykket");
             //SceneManager.UnloadScene("DesertScene");

@@ -22,7 +22,7 @@ public class EnemyMovement : MonoBehaviour
     void Update()
     {
         //TODO: Finde animation done statement
-        if (!_animator.GetBool("IsNearPlayer") && !_animator.GetBool("IsDead") && !_player_anim.GetBool("isDead"))
+        if (!_animator.GetBool("IsNearPlayer") && !_animator.GetBool("IsDead") && !_player_anim.GetBool("isDead") && _animator != null)
         {
              if (!_animator.GetCurrentAnimatorStateInfo(0).IsName("Basic Attack"))
              {

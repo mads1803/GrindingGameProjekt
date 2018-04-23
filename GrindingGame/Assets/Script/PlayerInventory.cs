@@ -8,9 +8,6 @@ public class PlayerInventory : MonoBehaviour
 {
     public GameObject inventory;
     public GameObject characterSystem;
-    public GameObject craftSystem;
-    private Inventory craftSystemInventory;
-    private CraftSystem cS;
     private Inventory mainInventory;
     private Inventory characterSystemInventory;
     private Tooltip toolTip;
@@ -165,12 +162,12 @@ public class PlayerInventory : MonoBehaviour
         {
             takeDamage(5);
 
-            Debug.Log("10 skade fra Druid");
+           // Debug.Log("10 skade fra Druid");
         }
         if (other.gameObject.tag == "AssassinWeapon")
         {
             takeDamage(10);
-            Debug.Log("10 skade fra Assassin");
+           // Debug.Log("10 skade fra Assassin");
         }
     }
     void takeDamage(int damage)
@@ -193,6 +190,7 @@ public class PlayerInventory : MonoBehaviour
                 m_Collider.enabled = false;
                 _nav.destination = _nav.transform.position;
                 _nav.enabled = false;
+               
                
 
             }
@@ -221,17 +219,13 @@ public class PlayerInventory : MonoBehaviour
         if (inputManagerDatabase == null)
             inputManagerDatabase = (InputManager)Resources.Load("InputManager");
 
-        if (craftSystem != null)
-            cS = craftSystem.GetComponent<CraftSystem>();
-
         if (GameObject.FindGameObjectWithTag("Tooltip") != null)
             toolTip = GameObject.FindGameObjectWithTag("Tooltip").GetComponent<Tooltip>();
         if (inventory != null)
             mainInventory = inventory.GetComponent<Inventory>();
         if (characterSystem != null)
             characterSystemInventory = characterSystem.GetComponent<Inventory>();
-        if (craftSystem != null)
-            craftSystemInventory = craftSystem.GetComponent<Inventory>();
+
     }
 
    void UpdateHPBar()
@@ -340,7 +334,7 @@ public class PlayerInventory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //
+        Debug.Log(currentDamage );
         UpdateHPBar();
 
         if (Input.GetKeyDown(inputManagerDatabase.CharacterSystemKeyCode))
@@ -371,19 +365,7 @@ public class PlayerInventory : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(inputManagerDatabase.CraftSystemKeyCode))
-        {
-            if (!craftSystem.activeSelf)
-                craftSystemInventory.openInventory();
-            else
-            {
-                if (cS != null)
-                    cS.backToInventory();
-                if (toolTip != null)
-                    toolTip.deactivateTooltip();
-                craftSystemInventory.closeInventory();
-            }
-        }
+       
 
     }
 

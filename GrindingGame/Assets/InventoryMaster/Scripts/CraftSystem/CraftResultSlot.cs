@@ -16,7 +16,7 @@ public class CraftResultSlot : MonoBehaviour
     void Start()
     {
         //inventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
-        craftSystem = transform.parent.GetComponent<CraftSystem>();
+     
 
         itemGameObject = (GameObject)Instantiate(Resources.Load("Prefabs/Item") as GameObject);
         itemGameObject.transform.SetParent(this.gameObject.transform);

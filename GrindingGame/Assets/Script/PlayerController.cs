@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
     private Animator anim;
@@ -12,8 +13,11 @@ public class PlayerController : MonoBehaviour {
     public Rigidbody arrow;
     public Transform arrowPoint;
     public float arrowSpeed;
-    
-    
+    public RectTransform gameOverPanel;
+    public RectTransform gameWonPanel;
+    public RectTransform pausePanel;
+
+
 
     private void OnEnable()
     {
@@ -31,10 +35,24 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         StopAndAttack();
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            freezeScreen();
+        }
+        if (PlayerInventory.currentHealth <= 0)
+        {
+            showGameOver();
+        }
         
     }
 
-   
+    public void Restart()
+    {
+        SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+        hideGameOver();
+        hideGameWon();
+    }
+
 
     void StopAndAttack()
     {
@@ -64,7 +82,6 @@ public class PlayerController : MonoBehaviour {
     void lookAtMouse()
     {
         {
-         
             Plane playerPlane = new Plane(Vector3.up, transform.position);
 
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -81,4 +98,58 @@ public class PlayerController : MonoBehaviour {
             }
         }
     }
+
+    public void freezeScreen()
+    {
+        if (Time.timeScale == 1)
+        {
+            Time.timeScale = 0;
+            showPaused();
+        }
+        else if (Time.timeScale == 0)
+        {
+            Time.timeScale = 1;
+            hidePaused();
+
+        }
+    }
+
+
+    public void showGameOver()
+    {
+        gameOverPanel.gameObject.SetActive(true);
+    }
+
+    public void hideGameOver()
+    {
+        gameOverPanel.gameObject.SetActive(false);
+    }
+
+    public void showGameWon()
+    {
+        hideGameOver();
+        gameWonPanel.gameObject.SetActive(true);
+       // GameObject.Find("WonScore").GetComponent<Text>().text = "Your Score: " ;
+    }
+
+    public void hideGameWon()
+    {
+        gameWonPanel.gameObject.SetActive(false);
+    }
+
+    public void showPaused()
+    {
+        pausePanel.gameObject.SetActive(true);
+    }
+
+    public void hidePaused()
+    {
+        pausePanel.gameObject.SetActive(false);
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
+    }
+
 }
