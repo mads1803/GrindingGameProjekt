@@ -37,6 +37,7 @@ public class PlayerInventory : MonoBehaviour
 
     int normalSize = 3;
     private bool dead = false;
+    private Animator anim;
 
     public void OnEnable()
     {
@@ -184,7 +185,7 @@ public class PlayerInventory : MonoBehaviour
             {
                 currentHealth = 0;
                 dead = true;
-               // _animator.SetBool("IsDead", true);
+               anim.SetBool("isDead", true);
                 Destroy(gameObject, 60);
                // audio.loop = false;
                // audio.clip = audioDie;
@@ -192,6 +193,7 @@ public class PlayerInventory : MonoBehaviour
                 m_Collider.enabled = false;
                 _nav.destination = _nav.transform.position;
                 _nav.enabled = false;
+               
 
             }
         }
@@ -201,6 +203,7 @@ public class PlayerInventory : MonoBehaviour
 
     void Start()
     {
+        anim = GetComponent<Animator>();
 
         if (HPMANACanvas != null)
         {
@@ -235,7 +238,11 @@ public class PlayerInventory : MonoBehaviour
     {
         hpText.text = (currentHealth + "/" + maxHealth);
         if (currentHealth < 0)
+        {
             currentHealth = 0;
+            
+        }
+           
         float fillAmount = currentHealth / maxHealth;
         hpImage.fillAmount = fillAmount;
     }
