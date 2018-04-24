@@ -30,6 +30,10 @@ public class PlayerController : MonoBehaviour {
         anim = GetComponent<Animator>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         anim.SetBool("isDead", false);
+        PlayerInventory.currentHealth = 100;
+        hideGameOver();
+        hideGameWon();
+        hidePaused();
     }
 	
 	// Update is called once per frame
